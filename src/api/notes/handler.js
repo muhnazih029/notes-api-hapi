@@ -1,6 +1,7 @@
 class NotesHandler {
-  constructor(service) {
+  constructor(service, validator) {
     this._service = service;
+    this._validator = validator;
 
     this.postNoteHandler = this.postNoteHandler.bind(this);
     this.getNotesHandler = this.getNotesHandler.bind(this);
@@ -11,14 +12,16 @@ class NotesHandler {
 
   postNoteHandler(Request, Hapi) {
     try {
+      this._validator.validateNotePayload(Request.payload);
+
       const { title = 'untitled', tags, body } = Request.payload;
-      const { noteId } = this._service.addNote({ title, tags, body });
+      const notes = this._service.addNote({ title, tags, body });
 
       const Response = Hapi.response({
         status: 'success',
         message: 'Catatan berhasil ditambahkan',
         data: {
-          noteId,
+          notes,
         },
       });
       return Response.code(201).takeover();
@@ -60,9 +63,12 @@ class NotesHandler {
 
   putNoteByIdHandler(Request, Hapi) {
     try {
+      this._validator.validateNotePayload(Request.payload);
+
       const { id } = Request.params;
       const { title, tags, body } = Request.payload;
       this._service.editNoteById(id, { title, tags, body });
+
       return {
         status: 'success',
         message: 'Catatan berhasil diperbarui',
