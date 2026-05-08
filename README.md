@@ -1,4 +1,4 @@
-# Notes API - Backend Service
+# Notes API - Backend
 
 A RESTful API for note management built with a clean layered architecture, strict data validation, and interactive documentation.
 
@@ -19,8 +19,9 @@ To get a local copy up and running, follow these simple steps.
 
 1. Clone the repository:
    ```bash
-   git clone <https://github.com/muhnazih029/notes-api-hapi>
-```
+git clone https://github.com/muhnazih029/notes-api-hapi 
+   ```
+   ```
 
 2. Navigate into the project directory:
 ```bash
