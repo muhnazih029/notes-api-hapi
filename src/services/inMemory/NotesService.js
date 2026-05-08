@@ -47,12 +47,7 @@ class NotesService {
     const note = this._notes.filter((n) => n.id === id)[0];
 
     if (note !== undefined) {
-      return {
-        status: 'success',
-        data: {
-          note,
-        },
-      };
+      return note;
     }
 
     return {

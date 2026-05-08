@@ -22,7 +22,11 @@
   },
   "dependencies": {
     "@hapi/hapi": "^21.3.12",
-    "joi": "^18.1.2",
-    "nanoid": "^3.3.7"
+    "@hapi/inert": "^7.1.0",
+    "@hapi/vision": "^7.0.3",
+    "hapi-swagger": "^17.3.2",
+    "joi": "^17.13.3",
+    "nanoid": "^3.3.7",
+    "swagger-jsdoc": "^6.2.8"
   }
 }
